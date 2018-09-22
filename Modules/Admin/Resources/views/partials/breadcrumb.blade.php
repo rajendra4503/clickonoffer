@@ -9,7 +9,7 @@
 
      <div class="page-header-content">
         <div class="page-title">
-            <h4> <span class="text-semibold">Dashboard</span> <small>Hello, Ok4Homes!</small></h4>
+            <h4> <span class="text-semibold">Dashboard</span> <small>Hello, Admin!</small></h4>
         </div>
 
         
