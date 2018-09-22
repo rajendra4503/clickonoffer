@@ -11,7 +11,7 @@
     <div class="category-content no-padding">
         <ul class="navigation navigation-main navigation-accordion">
         <!-- Main -->
-            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="" data-original-title="Ok4Homes Main pages"></i></li>
+            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="" data-original-title="admin"></i></li>
             <li class="active"><a href="{{url('/')}}" class="legitRipple"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 
             <li class="">
@@ -23,12 +23,13 @@
                 </ul>
             </li>
 
-             <li class="">
+             <li class="{{($viewPage=='Users')?'active':''}}">
                 <a href="{{route('user')}}" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>User Management</span>
                     <span class="legitRipple-ripple"></span></a>
-                <ul class="hidden-ul" style="display: none;">
-                <li><a href="{{route('user.create')}}" class="legitRipple">Create User</a></li> 
-                <li><a href="{{route('user')}}" class="legitRipple">View Users</a></li> 
+                <ul class="hidden-ul" style="display: {{($viewPage=='Users')?'block':'none'}};">
+                    <li><a href="{{route('adminUser')}}" class="legitRipple">Admin User</a></li> 
+                    <li><a href="{{route('singleUser')}}" class="legitRipple">Single Users</a></li>
+                    <li><a href="{{route('advertiser')}}" class="legitRipple">Advertiser</a></li> 
                 </ul>
             </li>
 

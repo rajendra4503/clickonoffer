@@ -23,6 +23,8 @@ function popupAlert(url,id){
  
 $(function(){ 
 $('#saveBtn').removeAttr('disabled');
+$('.legitRipple').removeAttr('disabled');
+
 /*
 Method : Delete particulare record
 @param : id,status

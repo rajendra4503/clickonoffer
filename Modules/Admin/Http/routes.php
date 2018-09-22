@@ -105,6 +105,69 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
                 ],
             ]
         );
+
+
+        Route::bind('adminUser', function ($value, $route) {
+            return Modules\Admin\Models\User::find($value);
+        });
+
+        Route::resource(
+            'adminUser',
+            'UsersController',
+            [
+                'names' => [
+                    'edit'    => 'adminUser.edit',
+                    'show'    => 'adminUser.show',
+                    'destroy' => 'adminUser.destroy',
+                    'update'  => 'adminUser.update',
+                    'store'   => 'adminUser.store',
+                    'index'   => 'adminUser',
+                    'create'  => 'adminUser.create',
+                ],
+            ]
+        );
+
+
+        Route::bind('singleUser', function ($value, $route) {
+            return Modules\Admin\Models\User::find($value);
+        });
+
+        Route::resource(
+            'singleUser',
+            'SingleUsersController',
+            [
+                'names' => [
+                    'edit'    => 'singleUser.edit',
+                    'show'    => 'singleUser.show',
+                    'destroy' => 'singleUser.destroy',
+                    'update'  => 'singleUser.update',
+                    'store'   => 'singleUser.store',
+                    'index'   => 'singleUser',
+                    'create'  => 'singleUser.create',
+                ],
+            ]
+        );
+
+        Route::bind('advertiser', function ($value, $route) {
+            return Modules\Admin\Models\User::find($value);
+        });
+
+        Route::resource(
+            'advertiser',
+            'AdvertiserController',
+            [
+                'names' => [
+                    'edit'    => 'advertiser.edit',
+                    'show'    => 'advertiser.show',
+                    'destroy' => 'advertiser.destroy',
+                    'update'  => 'advertiser.update',
+                    'store'   => 'advertiser.store',
+                    'index'   => 'advertiser',
+                    'create'  => 'advertiser.create',
+                ],
+            ]
+        );
+
        
        // wensite settings
 

@@ -8,29 +8,27 @@
       <div class="panel panel-white"> 
 
  
-        <div class="panel panel-flat">
-                      <div class="panel-heading">
-                    <h6 class="panel-title"><b>Create {{$heading ?? ''}}</b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-                    <div class="heading-elements">
-                      <ul class="icons-list">
-                        <li> <a type="button" href="{{route('user')}}" class="btn btn-primary text-white   btn-rounded "> View Users<span class="legitRipple-ripple" ></span></a></li> 
-                      </ul>
-                    </div>
-                  </div> 
+       <div class="panel panel-flat">
+              <div class="panel-heading">
+            <h6 class="panel-title"><b> {{$page_action??'List'}}</b>
+                <br>
+                <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+              <ul class="icons-list">
+                <li> <a type="button" href="{{route('singleUser')}}" class="btn btn-primary text-white   btn-rounded "> {{$heading??''}}<span class="legitRipple-ripple" ></span></a></li> 
+              </ul>
             </div>
+          </div> 
+        </div>
+
                      <div class="panel-body">
+                            <!-- BEGIN PROFILE SIDEBAR -->
                             <div class="profile-sidebar">
                                 <!-- PORTLET MAIN -->
                                 <div class="portlet light profile-sidebar-portlet bordered">
                                     <!-- SIDEBAR USERPIC -->
                                     <div class="profile-userpic">
-                                    @if(!empty($user->profile_image))
-                                    
-                                     <img src="{{$user->profile_image}}" class="img-responsive" alt=""> </div>
-                                    @else
-                                     <img src="{{ URL::asset('assets/img/user.png')}}" class="img-responsive" alt=""> </div>
-                                    @endif
-                                      
+                                        <img src="{{ URL::asset('assets/img/user.png')}}" class="img-responsive" alt=""> </div>
                                     <!-- END SIDEBAR USERPIC -->
                                     <!-- SIDEBAR USER TITLE -->
                                     <div class="profile-usertitle">
@@ -42,28 +40,20 @@
                                     <div class="profile-userbuttons">
                                         <button type="button" class="btn btn-circle green btn-sm">Email</button>
                                         <button type="button" class="btn btn-circle red btn-sm">Message</button>
-                                      @if($user->role_type==3)
-                                        <a href="{{url('admin/mytask/'.$user->id)}}">
-                                         <button type="button" class="btn btn-circle green btn-sm">Task</button>
-                                         </a>
-                                         @endif
                                     </div>
                                     <!-- END SIDEBAR BUTTONS -->
                                     <!-- SIDEBAR MENU -->
                                     <div class="profile-usermenu">
                                         <ul class="nav">
                                             <li>
-                                               <a href="{{url('admin/mytask/'.$user->id)}}">
+                                                <a href="#">
                                                     <i class="icon-home"></i> Overview </a>
                                             </li>
                                             <li class="active">
                                                 <a href="#">
                                                     <i class="icon-settings"></i> Account Settings </a>
                                             </li>
-                                            <!-- <li>
-                                                <a href="#">
-                                                    <i class="icon-info"></i> Help </a>
-                                            </li> -->
+                                             
                                         </ul>
                                     </div>
                                     <!-- END MENU -->
@@ -75,11 +65,25 @@
                                    
                                     <!-- END STAT -->
                                     <div>
-                                         
+                                        <h4 class="profile-desc-title"> {{$user->first_name}}</h4>
+                                          <div class="row list-separated profile-stat">
+                                      <!--   <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 37 </div>
+                                            <div class="uppercase profile-stat-text"> Projects </div>
+                                        </div> -->
+                                        <!-- <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 0 </div>
+                                            <div class="uppercase profile-stat-text"> Tasks </div>
+                                        </div> -->
+                                      <!--   <div class="col-md-4 col-sm-4 col-xs-6">
+                                            <div class="uppercase profile-stat-title"> 61 </div>
+                                            <div class="uppercase profile-stat-text"> Uploads </div>
+                                        </div> -->
+                                    </div>
                                         <span class="profile-desc-text">{{$user->about_me}}</span>
                                         <div class="margin-top-20 profile-desc-link">
                                             <i class="fa fa-phone"></i>
-                                          Contact Number: {{$user->phone}}
+                                            {{$user->phone}}
                                         </div>
                                        <!--  <div class="margin-top-20 profile-desc-link">
                                             <i class="fa fa-twitter"></i>
@@ -102,7 +106,7 @@
                                             <div class="portlet-title tabbable-line">
                                                 <div class="caption caption-md">
                                                     <i class="icon-globe theme-font hide"></i>
-                                                    <span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+                                                    <span class="caption-subject font-blue-madison bold uppercase"><b>User Account </b></span>
                                                 </div>
                                                 <ul class="nav nav-tabs">
                                                     <li class="active">
@@ -111,20 +115,20 @@
                                                     <li>
                                                         <a href="#tab_1_2" data-toggle="tab">Change Avatar</a>
                                                     </li>
-                                                   
                                                     <!-- <li>
+                                                        <a href="#tab_1_3" data-toggle="tab"> Business Info</a>
+                                                    </li> -->
+                                                  <!--   <li>
                                                         <a href="#tab_1_4" data-toggle="tab">  Payment Info</a>
                                                     </li> -->
                                                 </ul>
                                             </div>
-                                   {!! Form::model($user, ['method' => 'PATCH', 'route' => ['user.update', $user->id],'enctype'=>'multipart/form-data','class'=>
-                                   'form-basic ui-formwizard user-form']) !!}
-                                   <input type="hidden" name="role" value="{{$_REQUEST['role_type']}}"> 
+                                    {!! Form::model($user, ['route' => ['singleUser.store'],'class'=>'form-basic ui-formwizard user-form','id'=>'users_form']) !!}
                                     <div class="portlet-body">
                                         <div class="tab-content">
                                             <!-- PERSONAL INFO TAB --> 
                                                 <div class="margin-top-10">
-                                                    @if (count($errors) > 0)
+                                                    @if (count($errors) > 1000)
                                                       <div class="alert alert-danger">
                                                           <ul>
                                                               @foreach ($errors->all() as $error)
@@ -135,18 +139,15 @@
                                                     @endif
                                                 </div>
 
-                                            @include('admin::users.adminTab1', compact('user'))
+                                             @include('admin::users.singleUser.personel_info', compact('user'))
+
 
                                             {!! Form::close() !!} 
                                             <!-- END PERSONAL INFO TAB --> 
-                                            @include('admin::users.formTab2', compact('user'))
-                                            <!-- END CHANGE AVATAR TAB -->
-                                            <!-- CHANGE PASSWORD TAB -->
-                                            <!-- END CHANGE PASSWORD TAB -->
-                                            <!-- PRIVACY SETTINGS TAB --> 
-                                            @include('admin::users.formTab4', compact('user')) 
-                                            <!-- END PRIVACY SETTINGS TAB --> 
+                                            @include('admin::users.singleUser.changeAvtar', compact('user'))
+                                           
 
+                                            <!-- END CHANGE AVATAR TAB -->
                                            
                                         </div>
 
@@ -154,17 +155,11 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                     <!-- END PAGE BASE CONTENT -->
                 </div>
                 <!-- END CONTENT BODY -->
             </div>
-            
-            
-            <!-- END QUICK SIDEBAR -->
-        </div>
-        
-
         
 @stop

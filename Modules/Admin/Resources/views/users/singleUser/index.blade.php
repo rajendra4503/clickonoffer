@@ -9,10 +9,10 @@
             <div class="panel panel-white"> 
                 <div class="panel panel-flat">
                   <div class="panel-heading">
-                    <h6 class="panel-title"><b> {{$page_action }} </b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                    <h6 class="panel-title"><b> {{$page_title }} </b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
                     <div class="heading-elements">
                       <ul class="icons-list">
-                        <li> <a type="button" href="{{route('user.create')}}" class="btn btn-primary text-white btn-labeled btn-rounded "><b><i class="icon-plus3"></i></b> Add User<span class="legitRipple-ripple" ></span></a></li> 
+                        <li> <a type="button" href="{{route('singleUser.create')}}" class="btn btn-primary text-white btn-labeled btn-rounded "><b><i class="icon-plus3"></i></b> Add Single User<span class="legitRipple-ripple" ></span></a></li> 
                       </ul>
                     </div>
                   </div> 
@@ -21,7 +21,7 @@
                     <div class="table-responsive">
                                     <div class="table-toolbar">
                                         <div class="row">
-                                            <form action="{{route('user')}}" method="get" id="filter_data">
+                                            <form action="{{route('singleUser')}}" method="get" id="filter_data">
                                             <div class="col-md-2">
                                                 <select name="status" class="form-control" onChange="SortByStatus('filter_data')">
                                                     <option value="">Search by Status</option>
@@ -61,7 +61,7 @@
                                                 <th> Full Name </th>
                                                 <th> Email </th>
                                                 <th> Phone </th>
-                                                <th> {{($heading=='Admin Users')?'User Type':''}} </th>
+                                                <th> Role Type </th>
                                                 <th>Signup Date</th>
                                                 <th>Status</th>
                                                 <th>Action</th> 
@@ -97,11 +97,11 @@
                                                         </span>
                                                 </td>
                                                 <td> 
-                                      <a href="{{ route('user.edit',$result->id)}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
+                                      <a href="{{ route('singleUser.edit',$result->id)}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
                                           <i class="fa fa-edit" title="edit"></i> Edit
                                       </a>
 
-                                      {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('user.destroy', $result->id))) !!}
+                                      {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('singleUser.destroy', $result->id))) !!}
 
                                       <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-trash" title="Delete"></i> Delete
                                       </button>

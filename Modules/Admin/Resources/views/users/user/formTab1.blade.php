@@ -26,38 +26,12 @@
         <input type="password" placeholder="******" class="form-control" name="password"> 
     </div>
 
-    @if($user->role_type==3)
-     <div class="form-group {{ $errors->first('password', ' has-error') }}">
-        <label class="control-label">Role Type</label>
-          <select name="role_type" class="form-control select2me">
-               <option value="">Select Roles...</option>
-                 <option value="3" selected="selected">Customer</option>
-                
-                </select>
-                <span class="help-block">{{ $errors->first('role_type', ':message') }}</span>
-    </div>
-
-    @else
-     <div class="form-group {{ $errors->first('role_type', ' has-error') }}">
-        <label class="control-label">Role Type</label>
-          <select name="role_type" class="form-control select2me">
-               <option value="">Select Roles...</option>
-                @foreach($roles as $key=>$value)
-                
-                <option value="{{$value->id}}" {{($value->id ==$role_id)?"selected":"selected"}}>{{ $value->name }}</option>
-                @endforeach
-                </select>
-                <span class="help-block">{{ $errors->first('role_type', ':message') }}</span>
-    </div>
-
-    @endif 
+    <input type="hidden" name="role_type" value="admin">
     <div class="form-group {{ $errors->first('skills', ' has-error') }}">
         <label class="control-label">Skills</label>
-        <input type="text" placeholder="Skills" class="form-control" name="skills" value="{{$user->skills}}"> </div>
+        <input type="text" placeholder="Skills" class="form-control" name="skills" value="{{$user->skills}}"> 
+    </div>
 
-
-
-   
     <div class="form-group {{ $errors->first('about_me', ' has-error') }}">
         <label class="control-label">About</label>
         <textarea class="form-control" rows="3" placeholder="Basic detail" name="about_me">{{$user->about_me}}</textarea>

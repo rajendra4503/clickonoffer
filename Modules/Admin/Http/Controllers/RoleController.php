@@ -78,8 +78,9 @@ class RoleController extends Controller
     { 
         $page_title  = 'Role';
         $page_action = 'Create Role';
-        $role_type  = ['developer','admin','user'];
+        $role_type  = [1=>'admin',2=>'single user',3=>'advertiser'];
 
+         
         return view('admin::role.create', compact('role', 'role_type','page_title', 'page_action'));
     }
 
@@ -124,7 +125,8 @@ class RoleController extends Controller
     {    
         $page_title  = 'Role';
         $page_action = 'Edit Role';
-        $role_type  = ['developer','admin','user'];
+        $role_type  = [1=>'admin',2=>'single user',3=>'advertiser'];
+
 
         if(!empty($role->permissions)){
             $permissions =  json_decode($role->permissions);

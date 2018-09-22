@@ -23,7 +23,7 @@
   		                <thead>
   		                    <tr>
   		                        <th>#Sno</th>
-  		                        <th>Name</th> 
+  		                        <th>Display Name</th> 
                               <th>Role Type</th> 
   		                        <th>Created at</th> 
   		                        <th class="text-center">Actions</th>
@@ -34,9 +34,7 @@
                               <tr>
                                <th> {{++$key}} </th> 
                                <td> {{$result->name }} </td>
-                                <td> 
-                                  {{ $role_type[$result->type] }}
-                                 </td>
+                                 <td> {{$result->name }} </td>
                                    <td>
                                       {!! Carbon\Carbon::parse($result->created_at)->format('Y-m-d'); !!}
                                   </td>

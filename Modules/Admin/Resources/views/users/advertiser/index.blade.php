@@ -9,10 +9,10 @@
             <div class="panel panel-white"> 
                 <div class="panel panel-flat">
                   <div class="panel-heading">
-                    <h6 class="panel-title"><b> {{$page_action }} </b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                    <h6 class="panel-title"><b> {{$page_title }} </b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
                     <div class="heading-elements">
                       <ul class="icons-list">
-                        <li> <a type="button" href="{{route('user.create')}}" class="btn btn-primary text-white btn-labeled btn-rounded "><b><i class="icon-plus3"></i></b> Add User<span class="legitRipple-ripple" ></span></a></li> 
+                        <li> <a type="button" href="{{route('advertiser.create')}}" class="btn btn-primary text-white btn-labeled btn-rounded "><b><i class="icon-plus3"></i></b> Add {{$heading??''}}r<span class="legitRipple-ripple" ></span></a></li> 
                       </ul>
                     </div>
                   </div> 
@@ -21,7 +21,7 @@
                     <div class="table-responsive">
                                     <div class="table-toolbar">
                                         <div class="row">
-                                            <form action="{{route('user')}}" method="get" id="filter_data">
+                                            <form action="{{route('advertiser')}}" method="get" id="filter_data">
                                             <div class="col-md-2">
                                                 <select name="status" class="form-control" onChange="SortByStatus('filter_data')">
                                                     <option value="">Search by Status</option>
@@ -29,7 +29,7 @@
                                                     <option value="inActive" @if($status==='inActive') selected  @endif>Inactive</option>
                                                 </select>
                                             </div>
-                                             
+                                            
                                             <div class="col-md-2">
                                                 <input value="{{ (isset($_REQUEST['search']))?$_REQUEST['search']:''}}" placeholder="search by Name/Email" type="text" name="search" id="search" class="form-control" >
                                             </div>
@@ -61,7 +61,7 @@
                                                 <th> Full Name </th>
                                                 <th> Email </th>
                                                 <th> Phone </th>
-                                                <th> {{($heading=='Admin Users')?'User Type':''}} </th>
+                                                <th> Role Type </th>
                                                 <th>Signup Date</th>
                                                 <th>Status</th>
                                                 <th>Action</th> 
@@ -77,16 +77,9 @@
                                                 <td> {{$result->email}} </td>
                                                 <td> {{$result->phone}} </td>
                                                 <td class="center"> 
-                                               
-                                                    @if($result->role_type==3)
-                                                    <a href="{{url('admin/mytask/'.$result->id)}}">
-                                                        View Details
-                                                        <i class="glyphicon glyphicon-eye-open" title="edit"></i> 
-
-                                                    </a>
-                                                    @else
-                                                      {{ ($result->role_type==1)?'admin':($result->role_type==2)?'Sales':($result->role_type==4)?'Support':'Admin'}}
-                                                    @endif
+                                                
+                                                      {{ ($result->role_type==1)?'admin':($result->role_type==2)?'Single User':($result->role_type==3)?'Advertiser':'Admin'}}
+                                                     
                                                 </td>
                                                 <td>
                                                     {!! Carbon\Carbon::parse($result->created_at)->format('Y-m-d'); !!}
@@ -97,14 +90,14 @@
                                                         </span>
                                                 </td>
                                                 <td> 
-                                      <a href="{{ route('user.edit',$result->id)}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
-                                          <i class="fa fa-edit" title="edit"></i> Edit
-                                      </a>
+                                                    <a href="{{ route('advertiser.edit',$result->id)}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
+                                                        <i class="fa fa-edit" title="edit"></i> Edit
+                                                    </a>
 
-                                      {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('user.destroy', $result->id))) !!}
+                                                    {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('advertiser.destroy', $result->id))) !!}
 
-                                      <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-trash" title="Delete"></i> Delete
-                                      </button>
+                                                    <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-trash" title="Delete"></i> Delete
+                                                    </button>
 
                                                         
                                                          {!! Form::close() !!}
@@ -115,11 +108,11 @@
                                            @endforeach
                                          @endif   
                                         </tbody>
-                                    </table>
-                                    Showing {{($users->currentpage()-1)*$users->perpage()+1}} to {{$users->currentpage()*$users->perpage()}}
-                                    of  {{$users->total()}} entries
-                                     <div class="center" align="center">  {!! $users->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
-                                </div>
+                                  </table>
+                                  Showing {{($users->currentpage()-1)*$users->perpage()+1}} to {{$users->currentpage()*$users->perpage()}}
+                                  of  {{$users->total()}} entries
+                                   <div class="center" align="center">  {!! $users->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
+                      </div>
                 </div> 
                </div>
          </div> 

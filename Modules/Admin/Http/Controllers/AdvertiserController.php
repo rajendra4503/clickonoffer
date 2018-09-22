@@ -21,7 +21,7 @@ use Session;
 /**
  * Class AdminController
  */
-class UsersController extends Controller
+class AdvertiserController extends Controller
 {
     /**
      * @var  Repository
@@ -37,8 +37,8 @@ class UsersController extends Controller
         $this->middleware('admin');
         View::share('viewPage', 'Users');
         View::share('helper', new Helper);
-        View::share('heading', 'Users');
-        View::share('route_url', route('user'));
+        View::share('heading', 'Advertiser');
+        View::share('route_url', route('advertiser'));
 
         $this->record_per_page = Config::get('app.record_per_page');
     }
@@ -51,8 +51,8 @@ class UsersController extends Controller
 
     public function index(User $user, Request $request)
     {
-        $page_title  = 'Admin User';
-        $page_action = 'Admin Users';
+        $page_title  = 'Advertiser';
+        $page_action = 'View Advertiser';
 
         if ($request->ajax()) {
             $id           = $request->get('id');
@@ -81,7 +81,7 @@ class UsersController extends Controller
                 }
 
                 if (!empty($status)) {
-                    
+                   
                     $status =  ($status == 'active')?1:0;
                     $query->Where('status', $status);
                 }
@@ -89,15 +89,16 @@ class UsersController extends Controller
                 if ($role_type) {
                     $query->Where('role_type', $role_type);
                 }
-            })->where('role_type', 1)->Paginate($this->record_per_page);
+            })->where('role_type', '=', 3)->Paginate($this->record_per_page);
         } else {
-            $users = User::orderBy('id', 'desc')->where('role_type', 1)->Paginate($this->record_per_page);
+            $users = User::orderBy('id', 'desc')->where('role_type', '=', 3)->Paginate($this->record_per_page);
         }
         $roles = Roles::all();
 
         $js_file = ['common.js','bootbox.js','formValidate.js'];
 
-        return view('admin::users.user.index', compact('js_file', 'roles', 'status', 'users', 'page_title', 'page_action', 'roles', 'role_type'));
+
+        return view('admin::users.advertiser.index', compact('js_file', 'roles', 'status', 'users', 'page_title', 'page_action', 'roles', 'role_type'));
     }
 
     /*
@@ -106,14 +107,13 @@ class UsersController extends Controller
 
     public function create(User $user)
     {
-        $page_title  = 'Admin User';
-        $page_action = 'Create Admin User';
+        $page_title  = 'Advertiser';
+        $page_action = 'Create Advertiser';
         $roles       = Roles::all();
         $role_id     = null;
         $js_file     = ['common.js','bootbox.js','formValidate.js'];
 
-
-        return view('admin::users.user.create', compact('js_file', 'role_id', 'roles', 'user', 'page_title', 'page_action', 'groups'));
+        return view('admin::users.advertiser.create', compact('js_file', 'role_id', 'roles', 'user', 'page_title', 'page_action', 'groups'));
     }
 
     /*
@@ -122,6 +122,7 @@ class UsersController extends Controller
 
     public function store(UserRequest $request, User $user)
     {
+
         $user->fill(Input::all());
         $user->password = Hash::make($request->get('password'));
 
@@ -137,8 +138,8 @@ class UsersController extends Controller
         }
         $user->save();
         $js_file = ['common.js','bootbox.js','formValidate.js'];
-
-        return Redirect::to(route('user'))
+  
+        return Redirect::to(route('advertiser'))
             ->with('flash_alert_notice', 'New record successfully created.');
     }
 
@@ -150,19 +151,17 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
-        $page_title  = 'Admin User';
-        $page_action = 'Show Users';
-        $role_id     = $user->role_type;
+        $page_title  = 'Advertiser';
+        $page_action = 'Edit Signle Users'; 
         $roles       = Roles::all();
         $js_file     = ['common.js','bootbox.js','formValidate.js'];
 
-       
-
-        return view('admin::users.user.edit', compact('js_file', 'role_id', 'roles', 'user', 'page_title', 'page_action'));
+        return view('admin::users.advertiser.edit', compact('js_file', 'role_id', 'roles', 'user', 'page_title', 'page_action'));
     }
 
     public function update(Request $request, User $user)
     {
+         
         $user->fill(Input::all());
 
         if (!empty($request->get('password'))) {
@@ -173,16 +172,12 @@ class UsersController extends Controller
         $action          = $request->get('submit');
         $user->role_type = $request->get('role_type');
 
-        if ($action == 'avtar') {
-            if ($request->file('profile_image')) {
-                $profile_image = User::createImage($request, 'profile_image');
-                $request->merge(['profilePic' => $profile_image]);
-                $user->profile_image = $request->get('profilePic');
-            }
-        } elseif ($action == 'businessInfo') {
-        } elseif ($action == 'paymentInfo') {
-        } else {
-        }
+      
+        if ($request->file('profile_image')) {
+            $profile_image = User::createImage($request, 'profile_image');
+            $request->merge(['profilePic' => $profile_image]);
+            $user->profile_image = $request->get('profilePic');
+        }  
 
 
         $validator_email = User::where('email', $request->get('email'))
@@ -202,13 +197,7 @@ class UsersController extends Controller
         $user->save();
 
 
-        if ($request->get('role') == 3) {
-            $Redirect = 'clientuser';
-        } else {
-            $Redirect = 'user';
-        }
-
-        return Redirect::to(route($Redirect))
+        return Redirect::to(route('advertiser'))
             ->with('flash_alert_notice', 'Record successfully updated.');
     }
     /*
@@ -219,8 +208,8 @@ class UsersController extends Controller
     public function destroy(Request $request, $user)
     {
          $user->delete();
-        return Redirect::to(route('user'))
-            ->with('flash_alert_notice', 'User  successfully deleted.');
+        return Redirect::to(route('advertiser'))
+            ->with('flash_alert_notice', 'Signle User  successfully deleted.');
     }
 
     public function show(User $user)

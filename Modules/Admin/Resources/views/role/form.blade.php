@@ -16,7 +16,7 @@
                     <label>Role Type: <span class="text-danger">*</span></label> 
                      
                         {!!  Form::select('role_type', 
-                             ['0'=>'developer','1'=>'admin','2'=>'user'], 
+                             $role_type, 
                              null,['class' => 'form-control']) 
                         !!}
 

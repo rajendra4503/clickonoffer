@@ -8,16 +8,18 @@
       <div class="panel panel-white"> 
 
  
-        <div class="panel panel-flat">
-                      <div class="panel-heading">
-                    <h6 class="panel-title"><b>Create {{$heading ?? ''}}</b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-                    <div class="heading-elements">
-                      <ul class="icons-list">
-                        <li> <a type="button" href="{{route('user')}}" class="btn btn-primary text-white   btn-rounded "> View Users<span class="legitRipple-ripple" ></span></a></li> 
-                      </ul>
-                    </div>
-                  </div> 
+       <div class="panel panel-flat">
+              <div class="panel-heading">
+            <h6 class="panel-title"><b> {{$page_action??'List'}}</b>
+                <br>
+                <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+              <ul class="icons-list">
+                <li> <a type="button" href="{{route('advertiser')}}" class="btn btn-primary text-white   btn-rounded "> {{$heading??''}}<span class="legitRipple-ripple" ></span></a></li> 
+              </ul>
             </div>
+          </div> 
+        </div>
 
                      <div class="panel-body">
                             <!-- BEGIN PROFILE SIDEBAR -->
@@ -116,12 +118,12 @@
                                                     <!-- <li>
                                                         <a href="#tab_1_3" data-toggle="tab"> Business Info</a>
                                                     </li> -->
-                                                    <li>
+                                                  <!--   <li>
                                                         <a href="#tab_1_4" data-toggle="tab">  Payment Info</a>
-                                                    </li>
+                                                    </li> -->
                                                 </ul>
                                             </div>
-                                    {!! Form::model($user, ['route' => ['user.store'],'class'=>'form-basic ui-formwizard user-form','id'=>'users_form']) !!}
+                                    {!! Form::model($user, ['route' => ['advertiser.store'],'class'=>'form-basic ui-formwizard user-form','id'=>'users_form']) !!}
                                     <div class="portlet-body">
                                         <div class="tab-content">
                                             <!-- PERSONAL INFO TAB --> 
@@ -137,17 +139,16 @@
                                                     @endif
                                                 </div>
 
-                                            @include('admin::users.adminTab1', compact('user'))
+                                             @include('admin::users.advertiser.personel_info', compact('user'))
+
 
                                             {!! Form::close() !!} 
                                             <!-- END PERSONAL INFO TAB --> 
-                                            @include('admin::users.formTab2', compact('user'))
+                                            @include('admin::users.advertiser.changeAvtar', compact('user'))
+                                           
+
                                             <!-- END CHANGE AVATAR TAB -->
-                                            <!-- CHANGE PASSWORD TAB -->
-                                             <!-- END CHANGE PASSWORD TAB -->
-                                            <!-- PRIVACY SETTINGS TAB --> 
-                                            @include('admin::users.formTab4', compact('user')) 
-                                            <!-- END PRIVACY SETTINGS TAB -->  
+                                           
                                         </div>
 
                                     </div>

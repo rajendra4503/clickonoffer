@@ -70,36 +70,62 @@
 	            <span class="help-block">{{ $errors->first('role', ':message') }}</span>
 	        </div>
 	    </div> 
- 
+
+
+        <!--     <div class="form-group">
+                <label class="control-label col-md-3">DOB</label>
+                <div class="col-md-4">
+                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                        <input type="text" class="form-control" readonly name="datepicker">
+                        <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                 <!--    <span class="help-block"> select a date </span>
+                </div>
+            </div>   -->
+
             
             
-          <div class="form-group">
+          <!--   <div class="form-group">
                 <label class="control-label col-md-3">Remarks</label>
                 <div class="col-md-9">
                     <textarea name="markdown" data-provide="markdown" rows="10" data-error-container="#editor_error"></textarea>
                     <div id="editor_error"> </div>
                 </div>
-            </div>  
+            </div> -->
 
             
-</div>
-<div class="form-actions">
-    <div class="row">
-        <div class="col-md-offset-3 col-md-9">
-            <div class="col-md-2">
-                <button type="submit" class="btn col-md-12 blue mt-ladda-btn ladda-button" data-style="slide-up" id="saveBtn"> 
-                <span class="ladda-label"> Save </span>
-                <span class="ladda-spinner"></span>
-                <div class="ladda-progress" style="width: 0px;"></div>
-                </button>
-            </div>
-            <div class="col-md-2">    
-
-                <a href="{{route('user')}}">
-                {!! Form::button('Back', ['class'=>'btn btn-warning col-md-12 text-white']) !!} </a>
-            </div>            
         </div>
-    </div>
+<div class="form-actions">
+<div class="row">
+<div class="col-md-offset-3 col-md-9">
+<div class="col-md-2">
+<button type="submit" class="btn col-md-12 blue mt-ladda-btn ladda-button" data-style="slide-up" id="saveBtn"> 
+<span class="ladda-label"> Save </span>
+<span class="ladda-spinner"></span>
+<div class="ladda-progress" style="width: 0px;">
+</div>
+</button>
+</div>
+<div class="col-md-2">    
+
+<a href="{{route('user')}}">
+{!! Form::button('Back', ['class'=>'btn btn-warning col-md-12 text-white']) !!} </a>
+</div>            
+</div>
+</div>
 </div>
 
- 
+
+<div class="form-body">
+
+
+
+
+
+</div> 
+
