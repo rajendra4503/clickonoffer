@@ -216,10 +216,8 @@ class UsersController extends Controller
     public function destroy(Request $request, $user)
     {
         $user->delete();
-         Session::flash('error', 'test');
-        Session::flash('flash_alert_notice', 'User  successfully deleted.'); 
         return Redirect::to(route('user'))
-            ->with(['flash_alert_notice', 'User  successfully deleted.']);
+            ->with('flash_alert_notice', 'User  successfully deleted.');
     }
 
     public function show(User $user)
