@@ -9,11 +9,7 @@
     <div class="panel panel-flat">
         <div class="panel-heading">
                 <h6 class="panel-title"><b> {{$heading }}</b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-                <div class="heading-elements">
-                  <ul class="icons-list">
-                    <li> <a type="button" href="{{route('role.create')}}" class="btn btn-primary text-white btn-labeled btn-rounded "><b><i class="icon-plus3"></i></b> Add Role<span class="legitRipple-ripple" ></span></a></li> 
-                  </ul>
-            </div>
+                
         </div> 
     </div>  
                 

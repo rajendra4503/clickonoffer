@@ -12,10 +12,10 @@
         <ul class="navigation navigation-main navigation-accordion">
         <!-- Main -->
             <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="" data-original-title="Ok4Homes Main pages"></i></li>
-            <li class="active"><a href="#" class="legitRipple"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+            <li class="active"><a href="{{url('/')}}" class="legitRipple"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 
             <li class="">
-                <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Roles</span>
+                <a href="{{route('role')}}" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Roles</span>
                     <span class="legitRipple-ripple"></span></a>
                 <ul class="hidden-ul" style="display: none;">
                 <li><a href="{{route('role.create')}}" class="legitRipple">Create Role</a></li> 
@@ -24,11 +24,19 @@
             </li>
 
              <li class="">
-                <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>User Management</span>
+                <a href="{{route('user')}}" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>User Management</span>
                     <span class="legitRipple-ripple"></span></a>
                 <ul class="hidden-ul" style="display: none;">
                 <li><a href="{{route('user.create')}}" class="legitRipple">Create User</a></li> 
                 <li><a href="{{route('user')}}" class="legitRipple">View Users</a></li> 
+                </ul>
+            </li>
+
+             <li class="">
+                <a href="{{route('setting')}}" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Website Settings</span>
+                    <span class="legitRipple-ripple"></span></a>
+                <ul class="hidden-ul" style="display: none;">
+                <li><a href="{{route('setting')}}" class="legitRipple">Settings</a></li>  
                 </ul>
             </li>
 
