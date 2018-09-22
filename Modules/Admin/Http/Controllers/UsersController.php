@@ -215,7 +215,7 @@ class UsersController extends Controller
      */
     public function destroy(Request $request, $user)
     {
-         $user->delete();
+         //$user->delete();
         return Redirect::to(route('user'))
             ->with('flash_alert_notice', 'User  successfully deleted.');
     }
