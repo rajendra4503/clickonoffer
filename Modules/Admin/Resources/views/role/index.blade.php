@@ -18,7 +18,7 @@
                   </div> 
   		        </div>  
 		        
-  		        <div class="panel-body">
+  		        <div class="table-responsive">
   		            <table class="table datatable-basic table-bordered table-hover" id="roles_list">
   		                <thead>
   		                    <tr>
@@ -30,35 +30,34 @@
   		                    </tr>
   		                </thead>
   		                    <tbody>
-                                          @foreach($role as $key => $result)
-                                              <tr>
-                                               <th> {{++$key}} </th> 
-                                               <td> {{$result->name }} </td>
-                                                <td> 
-                                                  {{ $role_type[$result->type] }}
-                                                 </td>
-                                                       <td>
-                                                          {!! Carbon\Carbon::parse($result->created_at)->format('Y-m-d'); !!}
-                                                      </td>
-                                                      
-                                                      <td> 
-                                                          <a href="{{ route('role.edit',$result->id)}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
-                                                              <i class="fa fa-edit" title="edit"></i> Edit
-                                                          </a>
+                          @foreach($role as $key => $result)
+                              <tr>
+                               <th> {{++$key}} </th> 
+                               <td> {{$result->name }} </td>
+                                <td> 
+                                  {{ $role_type[$result->type] }}
+                                 </td>
+                                   <td>
+                                      {!! Carbon\Carbon::parse($result->created_at)->format('Y-m-d'); !!}
+                                  </td>
+                                  
+                                  <td> 
+                                      <a href="{{ route('role.edit',$result->id)}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
+                                          <i class="fa fa-edit" title="edit"></i> Edit
+                                      </a>
 
-                                                          {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('role.destroy', $result->id))) !!}
+                                      {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('role.destroy', $result->id))) !!}
 
-                                                          <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-trash" title="Delete"></i> Delete
-                                                          </button>
-                                                          
-                                                           {!! Form::close() !!}
-
-                                                      </td>
-                                                 
-                                              </tr>
-                                             @endforeach
-                                              
-                                          </tbody>
+                                      <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-trash" title="Delete"></i> Delete
+                                      </button>
+                                      
+                                       {!! Form::close() !!}
+                                  </td>
+                                 
+                              </tr>
+                             @endforeach
+                              
+                          </tbody>
   		            </table> 
   		        </div> 
  		       </div>

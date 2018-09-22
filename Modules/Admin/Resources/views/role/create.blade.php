@@ -5,10 +5,6 @@
       @include('admin::partials.breadcrumb')   
 
        @include('admin::partials.sidebar')  
-      
-      <!-- /main sidebar -->
-
- <div class="content-wrapper">
       <div class="panel panel-white"> 
 
  
@@ -28,7 +24,7 @@
                                
                 @include('admin::role.form')
 
-
+                <div class="table-responsive">
                 <table class="table table-striped table-hover table-bordered" id="contact">
                                          
                     <thead>
@@ -73,7 +69,7 @@
                                 @endforeach
                     </tbody>
                 </table> 
-
+                </div>
             {!! Form::close() !!}  
                      
         </div> 

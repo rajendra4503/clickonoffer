@@ -111,7 +111,7 @@ class RoleController extends Controller
         $role->permissions   = json_encode($request->get('permission'));
         $role->save();
 
-        return Redirect::to('o4k/roles')
+        return Redirect::to('admin/roles')
             ->with('flash_alert_notice', 'Role was successfully created !');
     }
     /*
@@ -159,7 +159,7 @@ class RoleController extends Controller
 
         $role->save();
 
-        return Redirect::to('o4k/roles')
+        return Redirect::to('admin/roles')
             ->with('flash_alert_notice', 'Role was successfully updated!');
     }
     /*
@@ -171,7 +171,7 @@ class RoleController extends Controller
     {
         $role->delete();
 
-        return Redirect::to('o4k/roles')
+        return Redirect::to('admin/roles')
             ->with('flash_alert_notice', 'Role was successfully deleted!');
     }
 

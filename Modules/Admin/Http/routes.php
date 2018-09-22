@@ -106,6 +106,27 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
             ]
         );
        
+       // wensite settings
+
+        Route::bind('setting', function ($value, $route) {
+            return Modules\Admin\Models\Settings::find($value);
+        });
+
+        Route::resource(
+            'setting',
+            'SettingsController',
+            [
+                'names' => [
+                    'edit'      => 'setting.edit',
+                    'show'      => 'setting.show',
+                    'destroy'   => 'setting.destroy',
+                    'update'    => 'setting.update',
+                    'store'     => 'setting.store',
+                    'index'     => 'setting',
+                    'create'    => 'setting.create',
+                ],
+            ]
+        );
        
        
     });

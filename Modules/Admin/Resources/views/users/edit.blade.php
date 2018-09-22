@@ -1,25 +1,24 @@
-
-@extends('packages::layouts.master')
-  @section('title', 'Dashboard')
-    @section('header')
-    <h1>Dashboard</h1>
-    @stop
+@extends('admin::layouts.master')
+ 
     @section('content') 
-      @include('packages::partials.navigation')
-      <!-- Left side column. contains the logo and sidebar -->
-      @include('packages::partials.sidebar')
-                             <!-- END SIDEBAR -->
-            <!-- BEGIN CONTENT -->
-             <div class="page-content-wrapper">
-                <!-- BEGIN CONTENT BODY -->
-                <div class="page-content">
-                    <!-- BEGIN PAGE HEAD-->
-                    
-                      @include('packages::partials.breadcrumb')
+      @include('admin::partials.navigation')
+      @include('admin::partials.breadcrumb')   
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- BEGIN PROFILE SIDEBAR -->
+       @include('admin::partials.sidebar')  
+      <div class="panel panel-white"> 
+
+ 
+        <div class="panel panel-flat">
+                      <div class="panel-heading">
+                    <h6 class="panel-title"><b>Create {{$heading ?? ''}}</b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                    <div class="heading-elements">
+                      <ul class="icons-list">
+                        <li> <a type="button" href="{{route('user')}}" class="btn btn-primary text-white   btn-rounded "> View Users<span class="legitRipple-ripple" ></span></a></li> 
+                      </ul>
+                    </div>
+                  </div> 
+            </div>
+                     <div class="panel-body">
                             <div class="profile-sidebar">
                                 <!-- PORTLET MAIN -->
                                 <div class="portlet light profile-sidebar-portlet bordered">
@@ -76,25 +75,11 @@
                                    
                                     <!-- END STAT -->
                                     <div>
-                                        <h4 class="profile-desc-title">About {{$user->first_name}}</h4>
-                                          <div class="row list-separated profile-stat">
-                                      <!--   <div class="col-md-4 col-sm-4 col-xs-6">
-                                            <div class="uppercase profile-stat-title"> 37 </div>
-                                            <div class="uppercase profile-stat-text"> Projects </div>
-                                        </div> -->
-                                        <!-- <div class="col-md-4 col-sm-4 col-xs-6">
-                                            <div class="uppercase profile-stat-title"> 0 </div>
-                                            <div class="uppercase profile-stat-text"> Tasks </div>
-                                        </div> -->
-                                      <!--   <div class="col-md-4 col-sm-4 col-xs-6">
-                                            <div class="uppercase profile-stat-title"> 61 </div>
-                                            <div class="uppercase profile-stat-text"> Uploads </div>
-                                        </div> -->
-                                    </div>
+                                         
                                         <span class="profile-desc-text">{{$user->about_me}}</span>
                                         <div class="margin-top-20 profile-desc-link">
                                             <i class="fa fa-phone"></i>
-                                            {{$user->phone}}
+                                          Contact Number: {{$user->phone}}
                                         </div>
                                        <!--  <div class="margin-top-20 profile-desc-link">
                                             <i class="fa fa-twitter"></i>
@@ -132,7 +117,8 @@
                                                     </li> -->
                                                 </ul>
                                             </div>
-                                   {!! Form::model($user, ['method' => 'PATCH', 'route' => ['user.update', $user->id],'enctype'=>'multipart/form-data']) !!}
+                                   {!! Form::model($user, ['method' => 'PATCH', 'route' => ['user.update', $user->id],'enctype'=>'multipart/form-data','class'=>
+                                   'form-basic ui-formwizard user-form']) !!}
                                    <input type="hidden" name="role" value="{{$_REQUEST['role_type']}}"> 
                                     <div class="portlet-body">
                                         <div class="tab-content">
@@ -149,16 +135,16 @@
                                                     @endif
                                                 </div>
 
-                                            @include('packages::users.adminTab1', compact('user'))
+                                            @include('admin::users.adminTab1', compact('user'))
 
                                             {!! Form::close() !!} 
                                             <!-- END PERSONAL INFO TAB --> 
-                                            @include('packages::users.formTab2', compact('user'))
+                                            @include('admin::users.formTab2', compact('user'))
                                             <!-- END CHANGE AVATAR TAB -->
                                             <!-- CHANGE PASSWORD TAB -->
                                             <!-- END CHANGE PASSWORD TAB -->
                                             <!-- PRIVACY SETTINGS TAB --> 
-                                            @include('packages::users.formTab4', compact('user')) 
+                                            @include('admin::users.formTab4', compact('user')) 
                                             <!-- END PRIVACY SETTINGS TAB --> 
 
                                            

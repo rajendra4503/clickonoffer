@@ -4,11 +4,7 @@
       @include('admin::partials.navigation')
       @include('admin::partials.breadcrumb')   
 
-       @include('admin::partials.sidebar') 
-      
-      <!-- /main sidebar -->
-
- <div class="content-wrapper">
+       @include('admin::partials.sidebar')  
       <div class="panel panel-white"> 
 
  
@@ -22,6 +18,7 @@
                     </div>
                   </div> 
             </div>
+
 
              {!! Form::model($role, ['method' => 'PATCH', 'route' => ['role.update', $role->id],'class'=>'form-basic ui-formwizard user-form','id'=>'form_sample_3','enctype'=>'multipart/form-data']) !!}
                 @include('admin::role.form', compact('role'))

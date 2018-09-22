@@ -5,8 +5,9 @@
       @include('admin::partials.breadcrumb')   
 
        @include('admin::partials.sidebar')  
- <div class="panel panel-white"> 
-                  <div class="panel panel-flat">
+
+            <div class="panel panel-white"> 
+                <div class="panel panel-flat">
                   <div class="panel-heading">
                     <h6 class="panel-title"><b> {{$heading }} List</b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
                     <div class="heading-elements">
@@ -15,14 +16,11 @@
                       </ul>
                     </div>
                   </div> 
-
-                  <div class="row">
-                        <div class="col-md-12">
-                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                            <div class="portlet light portlet-fit bordered">
-                                <div class="portlet-title">
-                                </div>
-                                <div class="portlet-body">
+                </div>  
+                 
+                
+                <div class="panel-body">
+                    <div class="table-responsive">
                                     <div class="table-toolbar">
                                         <div class="row">
                                             <form action="{{route('user')}}" method="get" id="filter_data">
@@ -110,12 +108,15 @@
                                                         </span>
                                                 </td>
                                                 <td> 
-                                                    <a href="{{ route('user.edit',$result->id)}}?role_type={{$result->role_type}}">
-                                                            <i class="fa fa-fw fa-pencil-square-o" title="edit"></i> 
-                                                        </a>
+                                      <a href="{{ route('user.edit',$result->id)}}?role_type={{$result->role_type}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
+                                          <i class="fa fa-edit" title="edit"></i> Edit
+                                      </a>
 
-                                                        {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('user.destroy', $result->id))) !!}
-                                                        <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-fw fa-trash" title="Delete"></i></button>
+                                      {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('user.destroy', $result->id))) !!}
+
+                                      <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-trash" title="Delete"></i> Delete
+                                      </button>
+
                                                         
                                                          {!! Form::close() !!}
 
@@ -130,26 +131,7 @@
                                     of  {{$users->total()}} entries
                                      <div class="center" align="center">  {!! $users->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
                                 </div>
-                            </div>
-                            <!-- END EXAMPLE TABLE PORTLET-->
-                        </div>
-                    </div>
-                </div>  
-                    
-                    <!-- END PAGE BASE CONTENT -->
-                </div>
-                <!-- END CONTENT BODY -->
-            </div>
-            
-            
-            <!-- END QUICK SIDEBAR -->
-        </div>
-
-        <script type="text/javascript">
-            
-            function SortByStatus(filter_data) {
-                $('#filter_data').submit();
-            }
-        </script>
-        
-@stop
+                </div> 
+               </div>
+         </div> 
+   @stop

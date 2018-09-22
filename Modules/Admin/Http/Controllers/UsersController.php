@@ -16,6 +16,7 @@ use Modules\Admin\Models\Roles;
 use Modules\Admin\Models\User;
 use Route;
 use View;
+use Session;
 
 /**
  * Class AdminController
@@ -212,12 +213,13 @@ class UsersController extends Controller
      * @param ID
      *
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $user)
     {
-        User::where('id', $id)->delete();
-
+        $user->delete();
+         Session::flash('error', 'test');
+        Session::flash('flash_alert_notice', 'User  successfully deleted.'); 
         return Redirect::to(route('user'))
-            ->with('flash_alert_notice', 'User  successfully deleted.');
+            ->with(['flash_alert_notice', 'User  successfully deleted.']);
     }
 
     public function show(User $user)

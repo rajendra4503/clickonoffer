@@ -141,9 +141,6 @@ class Helper
             $mail->MsgHTML($html);
             $mail->addAddress($email_content['receipent_email'], $email_content['first_name']);
 
-            if (isset($email_content['addBCC'])) {
-                $mail->addBCC($email_content['addBCC']);
-            }
 
             //$mail->addAttachment(‘/home/kundan/Desktop/abc.doc’, ‘abc.doc’); // Optional name
             $mail->SMTPOptions = [

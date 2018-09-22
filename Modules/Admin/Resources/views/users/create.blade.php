@@ -5,21 +5,21 @@
       @include('admin::partials.breadcrumb')   
 
        @include('admin::partials.sidebar')  
-            <!-- BEGIN CONTENT -->
-             <div class="page-content-wrapper">
-                <!-- BEGIN CONTENT BODY -->
-                <div class="panel panel-flat">
-                    <!-- BEGIN PAGE HEAD-->  
-                    <div class="panel-heading">
-                    <h6 class="panel-title"><b> {{$heading }} List</b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+      <div class="panel panel-white"> 
+
+ 
+        <div class="panel panel-flat">
+                      <div class="panel-heading">
+                    <h6 class="panel-title"><b>Create {{$heading ?? ''}}</b><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
                     <div class="heading-elements">
                       <ul class="icons-list">
-                        <li> <a type="button" href="{{route('user.create')}}" class="btn btn-primary text-white btn-labeled btn-rounded "><b><i class="icon-plus3"></i></b> All Users<span class="legitRipple-ripple" ></span></a></li> 
+                        <li> <a type="button" href="{{route('user')}}" class="btn btn-primary text-white   btn-rounded "> View Users<span class="legitRipple-ripple" ></span></a></li> 
                       </ul>
                     </div>
                   </div> 
-                    <div class="row">
-                        <div class="col-md-12">
+            </div>
+
+                     <div class="panel-body">
                             <!-- BEGIN PROFILE SIDEBAR -->
                             <div class="profile-sidebar">
                                 <!-- PORTLET MAIN -->
@@ -63,7 +63,7 @@
                                    
                                     <!-- END STAT -->
                                     <div>
-                                        <h4 class="profile-desc-title">About {{$user->first_name}}</h4>
+                                        <h4 class="profile-desc-title"> {{$user->first_name}}</h4>
                                           <div class="row list-separated profile-stat">
                                       <!--   <div class="col-md-4 col-sm-4 col-xs-6">
                                             <div class="uppercase profile-stat-title"> 37 </div>
@@ -104,7 +104,7 @@
                                             <div class="portlet-title tabbable-line">
                                                 <div class="caption caption-md">
                                                     <i class="icon-globe theme-font hide"></i>
-                                                    <span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+                                                    <span class="caption-subject font-blue-madison bold uppercase"><b>User Account </b></span>
                                                 </div>
                                                 <ul class="nav nav-tabs">
                                                     <li class="active">
@@ -121,7 +121,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                    {!! Form::model($user, ['route' => ['user.store'],'class'=>'','id'=>'users_form']) !!}
+                                    {!! Form::model($user, ['route' => ['user.store'],'class'=>'form-basic ui-formwizard user-form','id'=>'users_form']) !!}
                                     <div class="portlet-body">
                                         <div class="tab-content">
                                             <!-- PERSONAL INFO TAB --> 
@@ -154,15 +154,11 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                     <!-- END PAGE BASE CONTENT -->
                 </div>
                 <!-- END CONTENT BODY -->
             </div>
-            
-            
-            <!-- END QUICK SIDEBAR -->
-        </div> 
         
 @stop

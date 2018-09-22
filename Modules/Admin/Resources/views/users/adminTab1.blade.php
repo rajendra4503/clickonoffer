@@ -60,16 +60,20 @@
         <label class="control-label">About</label>
         <textarea class="form-control" rows="3" placeholder="Basic detail" name="about_me">{{$user->about_me}}</textarea>
     </div>
-  
    
     
- 
-    
-     <div class="margin-top-10">
+             <div class="col-md-12">
+                
+                  <div class="form-group pull-right ">
+                {!! Form::submit(' Save ', ['class'=>'btn  btn-primary text-white','id'=>'saveBtn']) !!}
 
-                <button type="submit" class="btn green" value="personelInfo" name="submit"> Save </button>
-                 <a href="{{url(URL::previous())}}">
-{!! Form::button('Cancel', ['class'=>'btn btn-warning text-white']) !!} </a>
-            </div>  
+
+                <a href="{{route('role')}}">
+                    {!! Form::button('Back', ['class'=>'btn btn-warning text-white']) !!} </a>
+                     </div>   
+            </div> 
+               
+             
 </div>
 </div>
+ 

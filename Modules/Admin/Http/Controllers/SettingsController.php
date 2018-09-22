@@ -8,17 +8,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
-use Input;
-use Modules\Admin\Helpers\Helper as Helper;
-use Modules\Admin\Http\Requests\SettingRequest;
-use Modules\Admin\Models\Category;
-use Modules\Admin\Models\Product;
+use Input,Route,View,Html,Url;
+use App\Helpers\Helper as Helper;
+use Modules\Admin\Http\Requests\SettingRequest; 
 use Modules\Admin\Models\Settings;
 use Modules\Admin\Models\User;
-use Route;
-use URL;
-use View;
-use Html;
 
 /**
  * Class AdminController
@@ -78,7 +72,7 @@ class SettingsController extends Controller
             $setting->$key_name = $value->field_value;
         }
 
-        return view('packages::setting.edit', compact('setting', 'website_title', 'website_email', 'website_url', 'contact_number', 'company_address', 'banner', 'page_title', 'page_action', 'helper'));
+        return view('admin::setting.edit', compact('setting', 'website_title', 'website_email', 'website_url', 'contact_number', 'company_address', 'banner', 'page_title', 'page_action', 'helper'));
     }
 
     /*
@@ -103,7 +97,7 @@ class SettingsController extends Controller
         $banner             = $setting::where('field_key', 'LIKE', '%banner_image%')->get();
 
 
-        return view('packages::setting.create', compact('setting', 'website_title', 'website_email', 'website_url', 'contact_number', 'company_address', 'banner', 'page_title', 'page_action', 'helper'));
+        return view('admin::setting.create', compact('setting', 'website_title', 'website_email', 'website_url', 'contact_number', 'company_address', 'banner', 'page_title', 'page_action', 'helper'));
     }
 
     /*
@@ -159,7 +153,7 @@ class SettingsController extends Controller
             ->selected(['id' => $product->product_category])
             ->renderAsDropdown();
 
-        return view('packages::setting.edit', compact('categories', 'product', 'page_title', 'page_action'));
+        return view('admin::setting.edit', compact('categories', 'product', 'page_title', 'page_action'));
     }
 
     public function update(Request $request, Settings $setting)
