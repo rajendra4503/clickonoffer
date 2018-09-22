@@ -2,7 +2,7 @@
 <body class="navbar-bottom" data-gr-c-s-loaded="true">
 
     <div class="navbar navbar-inverse bg-indigo">
-    <div class="navbar-header">
+    <div class="navbar-header" style="min-width: 225px !important">
     <a class="navbar-brand" href="{{url('/')}}"><img style="height: 24px;" src="{{url('public/images/logo.png')}} " alt=""></a>
     <ul class="nav navbar-nav visible-xs-block">
     <li><a data-toggle="collapse" data-target="#navbar-mobile" class="legitRipple"><i class="icon-tree5"></i></a></li>
