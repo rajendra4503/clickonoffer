@@ -23,13 +23,23 @@
                 </ul>
             </li>
 
-             <li class="{{($viewPage=='Users')?'active':''}}">
-                <a href="{{route('user')}}" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>User Management</span>
+            <li class="{{($viewPage=='Users')?'active':''}}">
+                <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Manage User</span>
                     <span class="legitRipple-ripple"></span></a>
                 <ul class="hidden-ul" style="display: {{($viewPage=='Users')?'block':'none'}};">
                     <li><a href="{{route('adminUser')}}" class="legitRipple">Admin User</a></li> 
                     <li><a href="{{route('singleUser')}}" class="legitRipple">Single Users</a></li>
                     <li><a href="{{route('advertiser')}}" class="legitRipple">Advertiser</a></li> 
+                </ul>
+            </li>
+
+
+             <li class="{{($viewPage=='Category')?'active':''}}">
+                <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Manage Categories</span>
+                    <span class="legitRipple-ripple"></span></a>
+                <ul class="hidden-ul" style="display: {{($viewPage=='Category')?'block':'none'}};">
+                    <li><a href="{{route('category')}}" class="legitRipple">Category</a></li> 
+                    <li><a href="{{route('sub-category')}}" class="legitRipple">Sub Category</a></li> 
                 </ul>
             </li>
 

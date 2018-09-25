@@ -190,7 +190,51 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
                 ],
             ]
         );
-       
+       // category
+
+        
+        /*------------User Category and controller---------*/
+
+        Route::bind('category', function ($value, $route) {
+            return Modules\Admin\Models\Category::find($value);
+        });
+
+        Route::resource(
+                'category',
+                'CategoryController',
+                [
+                    'names' => [
+                        'edit'      => 'category.edit',
+                        'show'      => 'category.show',
+                        'destroy'   => 'category.destroy',
+                        'update'    => 'category.update',
+                        'store'     => 'category.store',
+                        'index'     => 'category',
+                        'create'    => 'category.create',
+                    ],
+                ]
+            );
+        /*---------End---------*/
+
+
+        /*------------User Category and controller---------*/
+
+         Route::bind('sub-category', function($value, $route) {
+             return Modules\Admin\Models\Category::find($value);
+         });
+
+         Route::resource('sub-category', 'SubCategoryController', [
+             'names' => [
+                 'edit' => 'sub-category.edit',
+                 'show' => 'sub-category.show',
+                 'destroy' => 'sub-category.destroy',
+                 'update' => 'sub-category.update',
+                 'store' => 'sub-category.store',
+                 'index' => 'sub-category',
+                 'create' => 'sub-category.create',
+             ]
+                 ]
+         );
        
     });
 });

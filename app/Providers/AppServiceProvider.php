@@ -15,7 +15,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         $controllers = [];
+        //date format
+        $date_format = "d-m-Y";
+        View::share('date_format', $date_format);
+        //
+        $controllers = [];
 
         foreach (Route::getRoutes()->getRoutes() as $route) {
             $action = $route->getAction();
@@ -28,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
                     $step2 = str_replace('@index', '', $step1);
                     $step3 = str_replace('Controller', '', $step2);
 
-                    $notArr = ['AdminLogin'];
+                    $notArr = ['AdminLogin','Auth'];
 
                     if (in_array(ltrim($step3, '"\"'), $notArr)) {
                         continue;

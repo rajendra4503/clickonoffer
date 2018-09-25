@@ -48,5 +48,29 @@ class Category extends Eloquent
      *
      * @var array
      */
+
+    public function parentCategory(){
+        return $this->belongsTo('Modules\Admin\Models\Category', 'parent_id', 'id');
+    }
+
+    // images
+    public static function createImage($request, $fielName)
+    {
+        try {
+            if ($request->file($fielName)) {
+                $photo = $request->file($fielName);
+
+                $destinationPath = storage_path('uploads/category/');
+                $photo->move($destinationPath, time() . $photo->getClientOriginalName());
+                $photo_name = time() . $photo->getClientOriginalName();
+
+                return  'storage/uploads/category/' . $photo_name; 
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
    
 }
