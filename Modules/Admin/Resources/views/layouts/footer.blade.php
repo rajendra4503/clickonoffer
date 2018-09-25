@@ -28,6 +28,10 @@
         <script type="text/javascript" src="{{ URL::asset('assets/js/plugins/ui/ripple.min.js')}}"></script>
  
 
+         <script src="{{ URL::asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')}}" type="text/javascript"></script>
+          
+        
+
         <script src="{{ URL::asset('assets/global/plugins/ladda/spin.min.js')}}" type="text/javascript"></script>
 
         <script src="{{ URL::asset('assets/global/plugins/ladda/ladda.min.js')}}" type="text/javascript"></script>
@@ -35,6 +39,9 @@
 
         <script src="{{ URL::asset('assets/pages/scripts/ui-buttons.min.js')}}" type="text/javascript"></script>
         <script src="{{ URL::asset('assets/js/bootstrap-multiselect.js')}}" type="text/javascript"></script>
+
+        
+        <!-- END THEME LAYOUT SCRIPTS -->
 
 
         <script src="{{ URL::asset('assets/global/plugins/jquery-validation/js/jquery.validate.min.js')}}" type="text/javascript"></script>
