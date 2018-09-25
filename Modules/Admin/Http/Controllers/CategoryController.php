@@ -146,8 +146,10 @@ class CategoryController extends Controller
           
         $page_title  = 'Category';
         $page_action = 'Edit category';
-        $url         = url($category->category_image) ;
-
+        if($category->category_image){
+            $url         = url($category->category_image) ;
+        }
+         
         return view('admin::category.edit', compact('url', 'category' ,'page_title', 'page_action'));
     }
 
