@@ -17,6 +17,25 @@
                     </div>
                   </div> 
   		        </div> 
+  		         <div class="panel-body"> 
+                  <div class="table-toolbar">
+                    <div class="row">
+                      <form action="{{route('sub-category')}}" method="get" id="filter_data">
+                     
+                       
+                      <div class="col-md-3">
+                          <input value="{{ (isset($_REQUEST['search']))?$_REQUEST['search']:''}}" placeholder="Search by category/Sub category" type="text" name="search" id="search" class="form-control" >
+                      </div>
+                      <div class="col-md-2">
+                          <input type="submit" value="Search" class="btn btn-primary form-control">
+                      </div>
+                       
+                    </form>
+                    
+                  
+                    </div>
+                </div> 
+            </div>
   		        @if(Session::has('flash_alert_notice'))
                    <div class="alert alert-success alert-dismissable" style="margin:10px">
                       <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
