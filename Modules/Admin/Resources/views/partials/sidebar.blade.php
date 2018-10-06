@@ -18,8 +18,8 @@
                 <a href="{{route('role')}}" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Roles</span>
                     <span class="legitRipple-ripple"></span></a>
                 <ul class="hidden-ul" style="display: none;">
-                <li><a href="{{route('role.create')}}" class="legitRipple">Create Role</a></li> 
-                <li><a href="{{route('role')}}" class="legitRipple">View Roles</a></li> 
+                <li><a href="{{route('role.create')}}" class="legitRipple">Create Role</a></li>
+                <li><a href="{{route('role')}}" class="legitRipple">View Roles</a></li>
                 </ul>
             </li>
 
@@ -27,9 +27,9 @@
                 <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Manage User</span>
                     <span class="legitRipple-ripple"></span></a>
                 <ul class="hidden-ul" style="display: {{($viewPage=='Users')?'block':'none'}};">
-                    <li><a href="{{route('adminUser')}}" class="legitRipple">Admin User</a></li> 
+                    <li><a href="{{route('adminUser')}}" class="legitRipple">Admin User</a></li>
                     <li><a href="{{route('singleUser')}}" class="legitRipple">Single Users</a></li>
-                    <li><a href="{{route('advertiser')}}" class="legitRipple">Advertiser</a></li> 
+                    <li><a href="{{route('advertiser')}}" class="legitRipple">Advertiser</a></li>
                 </ul>
             </li>
 
@@ -38,8 +38,16 @@
                 <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Manage Categories</span>
                     <span class="legitRipple-ripple"></span></a>
                 <ul class="hidden-ul" style="display: {{($viewPage=='Category')?'block':'none'}};">
-                    <li><a href="{{route('category')}}" class="legitRipple">Category</a></li> 
-                    <li><a href="{{route('sub-category')}}" class="legitRipple">Sub Category</a></li> 
+                    <li><a href="{{route('category')}}" class="legitRipple">Category</a></li>
+                    <li><a href="{{route('sub-category')}}" class="legitRipple">Sub Category</a></li>
+                </ul>
+            </li>
+
+            <li class="{{($viewPage=='Product')?'active':''}}">
+                <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Manage Products</span>
+                    <span class="legitRipple-ripple"></span></a>
+                <ul class="hidden-ul" style="display: {{($viewPage=='Product')?'block':'none'}};">
+                    <li><a href="{{route('product')}}" class="legitRipple">Product</a></li>
                 </ul>
             </li>
 
@@ -47,15 +55,15 @@
                 <a href="{{route('setting')}}" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Website Settings</span>
                     <span class="legitRipple-ripple"></span></a>
                 <ul class="hidden-ul" style="display: none;">
-                <li><a href="{{route('setting')}}" class="legitRipple">Settings</a></li>  
+                <li><a href="{{route('setting')}}" class="legitRipple">Settings</a></li>
                 </ul>
             </li>
 
-           
+
         </ul>
     </div>
 </div>
-<!-- /main navigation -->               
+<!-- /main navigation -->
 </div>
 </div>
  <div class="content-wrapper">

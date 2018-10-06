@@ -13,7 +13,7 @@ class Product extends Eloquent
      *
      * @var string
      */
-    protected $table = 'services';
+    protected $table = 'products';
     /**
      * The attributes that are mass assignable.
      *

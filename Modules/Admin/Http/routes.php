@@ -28,21 +28,21 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
     Route::get('password/reset', 'AuthController@resetPassword');
     Route::get('logout', 'AuthController@logout')->name('logout');
 
-    
+
     Route::post('/post_login', 'AdminLoginController@post_login');
     Route::get('/logout', 'AdminLoginController@logout');
     Route::get('/CheckLogin', 'AdminLoginController@CheckLogin');
     Route::get('/404', 'AdminLoginController@not_found');
-    
+
      /* logged admin user opertaions */
     Route::group(['middleware' =>  'admin'], function(){
-              
-      Route::get('/', 'AdminLoginController@dashboard'); 
+
+      Route::get('/', 'AdminLoginController@dashboard');
        //       module
-        Route::get('/module', 'ModuleController@index'); 
+        Route::get('/module', 'ModuleController@index');
         Route::get('/module/create', 'ModuleController@create');
-        Route::post('/module/store', 'ModuleController@store'); 
-       
+        Route::post('/module/store', 'ModuleController@store');
+
       Route::bind('language', function ($value, $route) {
            return Modules\Admin\Models\Language::find($value);
        });
@@ -83,7 +83,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
                 ],
             ]
         );
-       
+
        /*------------User Model and controller---------*/
 
         Route::bind('user', function ($value, $route) {
@@ -168,7 +168,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
             ]
         );
 
-       
+
        // wensite settings
 
         Route::bind('setting', function ($value, $route) {
@@ -192,7 +192,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
         );
        // category
 
-        
+
         /*------------User Category and controller---------*/
 
         Route::bind('category', function ($value, $route) {
@@ -235,6 +235,25 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
              ]
                  ]
          );
-       
+
+         /*------------User Product and controller---------*/
+
+        Route::bind('product', function ($value, $route) {
+            return Modules\Admin\Models\Product::find($value);
+        });
+
+        Route::resource(
+                'product',
+                'ProductController',
+                [
+                    'names' => [
+                        'index'     => 'product',
+                        'create'    => 'product.create',
+                        'store'     => 'product.store',
+                    ],
+                ]
+            );
+        /*---------End---------*/
+
     });
 });

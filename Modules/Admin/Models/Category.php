@@ -64,7 +64,7 @@ class Category extends Eloquent
                 $photo->move($destinationPath, time() . $photo->getClientOriginalName());
                 $photo_name = time() . $photo->getClientOriginalName();
 
-                return  'storage/uploads/category/' . $photo_name; 
+                return  'storage/uploads/category/' . $photo_name;
             } else {
                 return false;
             }
@@ -72,5 +72,5 @@ class Category extends Eloquent
             return false;
         }
     }
-   
+
 }

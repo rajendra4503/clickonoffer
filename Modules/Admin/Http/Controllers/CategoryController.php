@@ -33,7 +33,7 @@ class CategoryController extends Controller
     public function __construct()
     {
         $this->middleware('admin');
-        View::share('viewPage', 'Category'); 
+        View::share('viewPage', 'Category');
         View::share('helper', new Helper);
         View::share('heading', 'Categories');
         View::share('route_url', route('category'));
@@ -89,7 +89,7 @@ class CategoryController extends Controller
     public function create(Category $category)
     {
         $page_title  = 'Category';
-        $page_action = 'Edit category'; 
+        $page_action = 'Edit category';
         return view('admin::category.create', compact('category', 'url', 'page_title', 'page_action', 'page_title'));
     }
 
@@ -120,9 +120,9 @@ class CategoryController extends Controller
                 $category_image = Category::createImage($request, 'category_image');
                 $request->merge(['category_image' => $category_image]);
                 $category->category_image = $request->get('category_image');
-        } 
+        }
 
-        
+
         $category->parent_id      =  $parent_id;
         $category->category_name  =  $request->get('category_name');
         $category->level          =  1;
@@ -143,13 +143,13 @@ class CategoryController extends Controller
 
     public function edit(Request $request, $category)
     {
-          
+
         $page_title  = 'Category';
         $page_action = 'Edit category';
         if($category->category_image){
             $url         = url($category->category_image) ;
         }
-         
+
         return view('admin::category.edit', compact('url', 'category' ,'page_title', 'page_action'));
     }
 
@@ -176,9 +176,9 @@ class CategoryController extends Controller
                 $category_image = Category::createImage($request, 'category_image');
                 $request->merge(['category_image' => $category_image]);
                 $category->category_image = $request->get('category_image');
-        } 
+        }
 
-        
+
         $category->parent_id      =  $parent_id;
         $category->category_name  =  $request->get('category_name');
         $category->level          =  1;
@@ -209,7 +209,7 @@ class CategoryController extends Controller
             ->with('flash_alert_notice', 'Category  successfully deleted.');
          }
 
-        
+
     }
 
     public function show(Category $category)
