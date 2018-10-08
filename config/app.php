@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Nwidart\Modules\LaravelModulesServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Nestable\NestableServiceProvider::class,
 
     ],
 
@@ -213,7 +214,8 @@ return [
         'Module' => Nwidart\Modules\Facades\Module::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Input' => Illuminate\Support\Facades\Input::class
+        'Input' => Illuminate\Support\Facades\Input::class,
+        'Nestable' => Nestable\Facades\NestableService::class,
     ],
 
 ];

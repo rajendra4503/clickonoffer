@@ -22,32 +22,24 @@ class ProductRequest extends FormRequest
                     }
                 case 'POST': {
                         return [
-                            'title'                => 'required|unique:products,title',
-                            'description'          => 'required',
-                            'price'                => 'required|numeric|min:0',
-                            'features'             => 'required|mimes:jpeg,bmp,png,gif',
-                            'tax'                  => 'required|numeric|min:0',
-                            'images'               => 'required|mimes:jpeg,bmp,png,gif',
-                            'monthly_price'        => 'required|numeric|min:0',
-                            'yearly_price'         => 'required|numeric|min:0',
-                            'half_yearly_price'    => 'required|numeric|min:0',
-                            'quarterly_price'      => 'required|numeric|min:0',
+                            'product_title'     => "required|unique:products,product_title" ,
+                            'product_category'  => 'required',
+                            'description'       => 'required',
+                            'price'             =>  'required|numeric|min:0',
+                            'discount'          =>  'required|numeric|min:0',
+                            'image'             =>  'required|mimes:jpeg,bmp,png,gif'
                         ];
                     }
                 case 'PUT':
                 case 'PATCH': {
 
                         return [
-                            'title'                => 'required|unique:products,title',
-                            'description'          => 'required',
-                            'price'                => 'required|numeric|min:0',
-                            'features'             => 'required|mimes:jpeg,bmp,png,gif',
-                            'tax'                  => 'required|numeric|min:0',
-                            'images'               => 'required|mimes:jpeg,bmp,png,gif',
-                            'monthly_price'        => 'required|numeric|min:0',
-                            'yearly_price'         => 'required|numeric|min:0',
-                            'half_yearly_price'    => 'required|numeric|min:0',
-                            'quarterly_price'      => 'required|numeric|min:0',
+                            'product_title'     => "required",
+                            'product_category'  => 'required',
+                            'description'       => 'required',
+                            'price'             =>  'required|numeric|min:0',
+                            'discount'          =>  'required|numeric|min:0',
+                            'image'             => 'mimes:jpeg,bmp,png,gif'
                         ];
 
                 }

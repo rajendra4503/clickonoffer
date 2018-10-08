@@ -12,9 +12,22 @@ use Illuminate\Support\Facades\Redirect;
 use Input;
 use Modules\Admin\Http\Requests\ProductRequest;
 use Modules\Admin\Models\Product;
+use Modules\Admin\Models\Category;
 use Route;
 use URL;
 use View;
+use Validator;
+use Auth;
+use Paginate;
+use Grids;
+use HTML;
+use Form;
+use Hash;
+use Lang;
+use Session;
+use Crypt;
+use Illuminate\Http\Dispatcher;
+use Response;
 
 /**
  * Class AdminController
@@ -87,12 +100,18 @@ class ProductController extends Controller
     {
         $page_title  = 'Product';
         $page_action = 'Add Product';
-        return view('admin::product.create', compact('product','page_title', 'page_action'));
+
+        $categories =  Category::attr(['name' => 'xyz','class'=>'form-control form-cascade-control input-small'])
+                        ->selected([1])
+                        ->renderAsDropdown();
+
+
+        return view('admin::product.create', compact('categories','product','page_title', 'page_action'));
     }
 
     public function store(ProductRequest $request, Product $product)
     {
-            dd($product);
+        return $request->all();
     }
 }
 
