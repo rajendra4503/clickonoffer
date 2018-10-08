@@ -51,6 +51,14 @@
                 </ul>
             </li>
 
+             <li class="{{($viewPage=='ProductUnit')?'active':''}}">
+                <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Manage Product Units</span>
+                    <span class="legitRipple-ripple"></span></a>
+                <ul class="hidden-ul" style="display: {{($viewPage=='ProductUnit')?'block':'none'}};">
+                    <li><a href="{{route('product-unit')}}" class="legitRipple">Product Unit</a></li>
+                </ul>
+            </li>
+
             <li class="{{($viewPage=='Product')?'active':''}}">
                 <a href="#" class="has-ul legitRipple"><i class="icon-stack2"></i> <span>Manage Products</span>
                     <span class="legitRipple-ripple"></span></a>

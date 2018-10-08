@@ -257,7 +257,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
 
          /*------------ Product Type and controller---------*/
 
-         Route::bind('product-type', function ($value, $route) {
+        Route::bind('product-type', function ($value, $route) {
             return Modules\Admin\Models\ProductType::find($value);
         });
 
@@ -272,6 +272,28 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
                         'destroy'   => 'product-type.destroy',
                         'edit'      => 'product-type.edit',
                         'update'    => 'product-type.update',
+                    ],
+                ]
+            );
+        /*---------End---------*/
+
+        /*------------ Product Type and controller---------*/
+
+        Route::bind('product-unit', function ($value, $route) {
+            return Modules\Admin\Models\ProductUnit::find($value);
+        });
+
+        Route::resource(
+                'product-unit',
+                'ProductUnitController',
+                [
+                    'names' => [
+                        'index'     => 'product-unit',
+                        'create'    => 'product-unit.create',
+                        'store'     => 'product-unit.store',
+                        'destroy'   => 'product-unit.destroy',
+                        'edit'      => 'product-unit.edit',
+                        'update'    => 'product-unit.update',
                     ],
                 ]
             );
