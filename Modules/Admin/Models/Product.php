@@ -31,7 +31,11 @@ class Product extends Eloquent
      *
      * @var array
      */
-    protected $fillable = ['product_title','product_category','price','description','discount','meta_key','meta_description'];  // All field of user table here
+
+    protected $fillable = ['product_title','slug','url','meta_key','meta_description','product_category',
+    'price','unit','qty','discount','description','photo','additional_images','video_url','product_type',
+    'validity','coupon_code','total_stocks','available_stocks','views','created_by','meta_title',
+    'rating','vendor_id','status','publish'];  // All field of user table here
 
 
     /**
@@ -42,7 +46,6 @@ class Product extends Eloquent
 
     public function category()
     {
-
         return $this->belongsTo('Modules\Admin\Models\Category','product_category','id');
     }
 }

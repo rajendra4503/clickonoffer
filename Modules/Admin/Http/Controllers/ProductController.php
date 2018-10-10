@@ -99,19 +99,64 @@ class ProductController extends Controller
     public function create(Product $product)
     {
         $page_title  = 'Product';
+
         $page_action = 'Add Product';
 
-        $categories =  Category::attr(['name' => 'xyz','class'=>'form-control form-cascade-control input-small'])
+        $categories = Category::attr(['name' => 'product_category','class'=>'form-control form-cascade-control input-small'])
                         ->selected([1])
                         ->renderAsDropdown();
-
 
         return view('admin::product.create', compact('categories','product','page_title', 'page_action'));
     }
 
+
+     public function getCategoryById($id){
+
+        $url =  Category::where('id',$id)->first();
+
+        return  $url->slug.'/';
+    }
+
+
     public function store(ProductRequest $request, Product $product)
     {
-        return $request->all();
+
+        $cat_url    = $this->getCategoryById($request->get('product_category'));
+
+        $pro_slug   = str_slug($request->get('product_title'));
+
+        $url        = $cat_url.$pro_slug;
+
+        if ($request->file('image')) {
+
+            $photo = $request->file('image');
+
+            $destinationPath = storage_path('uploads/products');
+
+            $photo->move($destinationPath, time().$photo->getClientOriginalName());
+
+            $photo_name = time().$photo->getClientOriginalName();
+
+            $request->merge(['photo'=>$photo_name]);
+
+            $product->product_title      =   $request->get('product_title');
+            $product->slug              =   str_slug($request->get('product_title'));
+            $product->product_category   =   $request->get('product_category');
+            $product->description        =   $request->get('description');
+            $product->price              =   $request->get('price');
+            $product->discount           =   $request->get('discount');
+            $product->photo              =   $photo_name;
+            $product->meta_key           =   $request->get('meta_key');
+            $product->meta_description   =   $request->get('meta_description');
+            $product->url                =   $url;
+
+            $product->save();
+
+        }
+
+        return Redirect::to(route('product'))
+                            ->with('flash_alert_notice', 'New Product was successfully created !');
+
     }
 }
 

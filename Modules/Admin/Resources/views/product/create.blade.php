@@ -19,12 +19,11 @@
     </div>
   </div>
 
+        {!! Form::model($product, ['route' => ['product.store'],'class'=>'form-basic ui-formwizard user-form','id'=>'user-form','enctype'=>'multipart/form-data']) !!}
 
-           {!! Form::model($product, ['route' => ['product.store'],'class'=>'form-basic ui-formwizard user-form','id'=>'user-form','enctype'=>'multipart/form-data']) !!}
+            @include('admin::product.form')
 
-                @include('admin::product.form')
-
-            {!! Form::close() !!}
+        {!! Form::close() !!}
 
         </div>
 @stop

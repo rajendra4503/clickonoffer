@@ -25,9 +25,9 @@ class ProductRequest extends FormRequest
                             'product_title'     => "required|unique:products,product_title" ,
                             'product_category'  => 'required',
                             'description'       => 'required',
-                            'price'             =>  'required|numeric|min:0',
-                            'discount'          =>  'required|numeric|min:0',
-                            'image'             =>  'required|mimes:jpeg,bmp,png,gif'
+                            'price'             => 'required|numeric|min:0',
+                            'discount'          => 'required|numeric|min:0',
+                            'image'             => 'required|mimes:jpeg,bmp,png,gif'
                         ];
                     }
                 case 'PUT':
@@ -37,8 +37,8 @@ class ProductRequest extends FormRequest
                             'product_title'     => "required",
                             'product_category'  => 'required',
                             'description'       => 'required',
-                            'price'             =>  'required|numeric|min:0',
-                            'discount'          =>  'required|numeric|min:0',
+                            'price'             => 'required|numeric|min:0',
+                            'discount'          => 'required|numeric|min:0',
                             'image'             => 'mimes:jpeg,bmp,png,gif'
                         ];
 
