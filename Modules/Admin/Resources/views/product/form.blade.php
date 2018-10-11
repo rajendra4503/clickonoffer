@@ -104,7 +104,6 @@
                 </div>
                 <div class="tab-pane" id="2">
 
-
                                 <div class="col-md-12">
                                     <div class="form-group {{ $errors->first('meta_title', ' has-error') }}  @if(session('field_errors')) {{ 'has-error' }} @endif">
                                         <label class="control-label col-md-2">Meta title</label>
@@ -135,7 +134,6 @@
                                                     <span class="help-block" style="color:red">{{ $errors->first('meta_description', ':message') }}</span>
                                                     @if(Session::has('flash_alert_notice'))
                                                     <span class="label label-danger">
-
                                                         {{ Session::get('flash_alert_notice') }}
                                                     </span>@endif
                                             </div>
@@ -145,7 +143,6 @@
 
 
                         <div class="tab-pane" id="3">
-
 
                                 <div class="col-md-12">
                                         &nbsp;&nbsp;
@@ -162,47 +159,47 @@
                                                 <span class="help-block" style="color:red">{{ $errors->first('image', ':message') }}</span>
                                             </div>
                                         </div>
-
                                 </div>
 
-
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <div class="form-group">
                                             <label class="col-lg-2 col-md-2 control-label">Product Image2</label>
                                             <div class="col-lg-6 col-md-6">
-
                                                     {!! Form::file('photo1',null,['class' => 'form-control form-cascade-control input-small'])  !!}
                                                     <br>
                                                     @if(!empty($product->photo))
                                                         <img src="{!! Url::to('storage/uploads/products/'.$product->photo) !!}" width="100px">
                                                         <input type="hidden" name="photo1" value="{!! $product->photo !!}">
                                                     @endif
-
                                             </div>
                                         </div>
+                                </div> --}}
 
-                                    </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 control-label">Product Images</label>
+                                            <div class="col-lg-6 col-md-6">
+                                                    <div class="input-group control-group increment" >
 
-
-                                    <div class="col-md-12">
-                                            <div class="form-group">
-                                                    <label class="col-lg-2 col-md-2 control-label">Product Image3</label>
-                                                    <div class="col-lg-6 col-md-6">
-
-                                                        {!! Form::file('photo2',null,['class' => 'form-control form-cascade-control input-small'])  !!}
-                                                        <br>
-                                                        @if(!empty($product->photo))
-                                                            <img src="{!! Url::to('storage/uploads/products/'.$product->photo) !!}" width="100px">
-                                                            <input type="hidden" name="photo2" value="{!! $product->photo !!}">
-                                                        @endif
+                                                            {!! Form::file('images[]',null,['class' => 'form-control form-cascade-control input-small','accept'=>'image/*']) !!}
+                                                            <div class="input-group-btn"> 
+                                                                <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                                            </div>
+                                                    </div>
+                                                    <div class="clone hide">
+                                                        <div class="control-group input-group" style="margin-top:10px">
+                                                            {!! Form::file('images[]',null,['class' => 'form-control form-cascade-control input-small','accept'=>'image/*'])  !!}
+                                                            <div class="input-group-btn"> 
+                                                            <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                             </div>
+                                        </div>
                                     </div>
-
-                                 </div>
+                                </div>
                          </div>
-                 </div>
-
+                </div>
 
               &nbsp; &nbsp;
              <div class="col-md-12">

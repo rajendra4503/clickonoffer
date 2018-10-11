@@ -27,7 +27,8 @@ class ProductRequest extends FormRequest
                             'description'       => 'required',
                             'price'             => 'required|numeric|min:0',
                             'discount'          => 'required|numeric|min:0',
-                            'image'             => 'required|mimes:jpeg,bmp,png,gif'
+                            'image'             => 'required|mimes:jpeg,bmp,png,gif',
+                            'images.*'            => 'mimes:jpeg,bmp,png,gif'
                         ];
                     }
                 case 'PUT':
@@ -39,7 +40,8 @@ class ProductRequest extends FormRequest
                             'description'       => 'required',
                             'price'             => 'required|numeric|min:0',
                             'discount'          => 'required|numeric|min:0',
-                            'image'             => 'mimes:jpeg,bmp,png,gif'
+                            'image'             => 'mimes:jpeg,bmp,png,gif',
+                            'images.*'          => 'mimes:jpeg,bmp,png,gif'
                         ];
 
                 }

@@ -122,25 +122,35 @@ class ProductController extends Controller
     {
 
         $cat_url    = $this->getCategoryById($request->get('product_category'));
-
         $pro_slug   = str_slug($request->get('product_title'));
-
         $url        = $cat_url.$pro_slug;
 
         if ($request->file('image')) {
 
+            //product image
             $photo = $request->file('image');
-
             $destinationPath = storage_path('uploads/products');
-
             $photo->move($destinationPath, time().$photo->getClientOriginalName());
-
             $photo_name = time().$photo->getClientOriginalName();
-
             $request->merge(['photo'=>$photo_name]);
 
+
+            //product multiple images
+            // if($request->hasfile('images'))
+            // {
+            //     foreach($request->file('images') as $image)
+            //     {
+            //         $image->move($destinationPath, time().$image->getClientOriginalName());
+
+            //         $name =  time().$image->getClientOriginalName();
+
+            //         $images[] = $name;
+            //     }
+            //     $product->additional_images  =   $images;
+            // }
+
             $product->product_title      =   $request->get('product_title');
-            $product->slug              =   str_slug($request->get('product_title'));
+            $product->slug               =   str_slug($request->get('product_title'));
             $product->product_category   =   $request->get('product_category');
             $product->description        =   $request->get('description');
             $product->price              =   $request->get('price');
